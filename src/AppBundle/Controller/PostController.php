@@ -29,10 +29,7 @@ class PostController extends Controller {
         return $this->redirect($this->generateUrl(
             'index'
         ));
-    }
-        
-        
-        
+    }        
         return $this->render('default/addpost.html.twig', array(
             'form' => $form->createView(),
         ));
