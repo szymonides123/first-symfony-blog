@@ -9,21 +9,30 @@ use AppBundle\Model\PostForm;
 use AppBundle\Entity\Posts;
 
 class PostController extends Controller {
-    
-    private $postform;
-   // private $post;
+
+    private $post;
 
 
-    public function __construct(PostForm $postform/*, Posts $post*/) {
-        
-      $this->postform = $postform; 
-     // $this->post=$post;
+    public function __construct(Posts $post) {
+      $this->post=$post;
     }
     
-    public function addAction(){
+    public function addAction(Request $request){
+        $form= $this->createForm(PostForm::class, $this->post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($this->post);
+            $em->flush();
+
+        return $this->redirect($this->generateUrl(
+            'index'
+        ));
+    }
         
-        $post = new Posts;
-        $form= $this->createForm(PostForm::class, $post);
+        
+        
         return $this->render('default/addpost.html.twig', array(
             'form' => $form->createView(),
         ));
