@@ -16,5 +16,8 @@ $collection->add('addpost', new Route('/post/add', array(
 $collection->add('showpost', new Route('/post/{id}', array(
     '_controller' => 'AppBundle:ShowPost:show',
 )));
+$collection->add('register', new Route('/register', array(
+    '_controller' => 'AppBundle:Register:index',
+)));
 
 return $collection;
