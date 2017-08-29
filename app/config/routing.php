@@ -19,5 +19,7 @@ $collection->add('showpost', new Route('/post/{id}', array(
 $collection->add('register', new Route('/register', array(
     '_controller' => 'AppBundle:Register:index',
 )));
-
+$collection->add('addcomment', new Route('/post/add/comment', array(
+    '_controller' => 'AppBundle:Post:addComment',
+)));
 return $collection;
