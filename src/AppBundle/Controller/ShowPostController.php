@@ -5,11 +5,24 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Model\PostForm;
+use AppBundle\Model\CommentForm;
+use AppBundle\Entity\Posts;
+use AppBundle\Entity\Comment;
 
 
 class ShowPostController extends Controller {
     
-    public function showAction($id){
+    public function __construct(Posts $posts, Comment $comment ) {
+        $this->posts=$posts;
+        $this->comment=$comment;  
+      
+    }
+    
+    
+    public function showAction($id, Request $request){
         $post = $this->getDoctrine()
         ->getRepository('AppBundle:Posts')
         ->find($id);
@@ -18,8 +31,21 @@ class ShowPostController extends Controller {
             'No product found for id '.$id
         );
         }
+        $form= $this->createForm(CommentForm::class, $this->comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($this->comment);
+            $em->flush();
+
+        return $this->redirect($this->generateUrl(
+            'showpost'
+        ));
+        }
         return $this->render('default/showpost.html.twig', array(
             'post' => $post,
+            'form' => $form->createView(),
         ));
     }
 }
