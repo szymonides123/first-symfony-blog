@@ -20,6 +20,11 @@ class Comment
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+      * @ORM\Column(type="integer")
+      */
+    protected $postId;
     /**
       * @ORM\Column(type="text")
       */
@@ -43,5 +48,76 @@ class Comment
     {
         return $this->id;
     }
-}
 
+    /**
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return Comment
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set publicationdate
+     *
+     * @param \DateTime $publicationdate
+     *
+     * @return Comment
+     */
+    public function setPublicationdate($publicationdate)
+    {
+        $this->publicationdate = $publicationdate;
+
+        return $this;
+    }
+
+    /**
+     * Get publicationdate
+     *
+     * @return \DateTime
+     */
+    public function getPublicationdate()
+    {
+        return $this->publicationdate;
+    }
+
+    /**
+     * Set author
+     *
+     * @param string $author
+     *
+     * @return Comment
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+}

@@ -31,16 +31,23 @@ class ShowPostController extends Controller {
             'No product found for id '.$id
         );
         }
+        //Warunek czy znajduje sie jakiś komentarz w bazie
+//        if(!$comment){
+//                ;
+//        }
+        
         $form= $this->createForm(CommentForm::class, $this->comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $this->comment->setPostId($id);
             $em->persist($this->comment);
             $em->flush();
 
         return $this->redirect($this->generateUrl(
-            'showpost'
+            'showpost',
+            array('id' => $id)
         ));
         }
         return $this->render('default/showpost.html.twig', array(

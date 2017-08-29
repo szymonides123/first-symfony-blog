@@ -120,4 +120,28 @@ class Comment
     {
         return $this->author;
     }
+
+    /**
+     * Set postId
+     *
+     * @param integer $postId
+     *
+     * @return Comment
+     */
+    public function setPostId($postId)
+    {
+        $this->postId = $postId;
+
+        return $this;
+    }
+
+    /**
+     * Get postId
+     *
+     * @return integer
+     */
+    public function getPostId()
+    {
+        return $this->postId;
+    }
 }
