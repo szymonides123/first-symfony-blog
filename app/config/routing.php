@@ -4,6 +4,9 @@ use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Route;
 
 $collection = new RouteCollection();
+$collection->addCollection(
+        $loader->import("")
+        );
 $collection->add('index', new Route('/', array(
     '_controller' => 'AppBundle:Index:index',
 )));

@@ -19,13 +19,10 @@ class ShowPostController extends Controller {
         $this->posts=$posts;
         $this->comment=$comments;  
       
-    }
-    
-    
+    }   
     public function showAction($id, Request $request){
         $post = $this->getDoctrine()
-        ->getRepository('AppBundle:Posts')
-        ->find($id);
+        ->getRepository('AppBundle:Posts')->find($id);
         if (!$post) {
         throw $this->createNotFoundException(
             'No product found for id '.$id
@@ -34,13 +31,7 @@ class ShowPostController extends Controller {
         $commentquery = $em->createQuery(
                 'SELECT p From AppBundle:Comment p WHERE p.postId = :id'
                 )->setParameter('id', $id);
-        $comment = $commentquery->getResult();
-        
-        //Warunek czy znajduje sie jakiś komentarz w bazie
-//        if(!$comment){
-//                ;
-//        }
-        
+        $comment = $commentquery->getResult(); 
         $form= $this->createForm(CommentForm::class, $this->comment);
         $form->handleRequest($request);
 
