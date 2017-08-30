@@ -8,4 +8,9 @@
      <input type="submit" value="Dodaj komentarz"
            class="btn btn-default pull-left" />
      {{ form_end(form) }}
+     </br></br></br>
+     {% for com in comment %}
+        <h4>{{ com.author }}</h4>
+        <h6>{{ com.content }}</h6>
+    {% endfor %}
  {% endblock %}

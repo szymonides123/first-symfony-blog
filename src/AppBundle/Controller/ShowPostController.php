@@ -15,9 +15,9 @@ use AppBundle\Entity\Comment;
 
 class ShowPostController extends Controller {
     
-    public function __construct(Posts $posts, Comment $comment ) {
+    public function __construct(Posts $posts, Comment $comments ) {
         $this->posts=$posts;
-        $this->comment=$comment;  
+        $this->comment=$comments;  
       
     }
     
@@ -29,8 +29,13 @@ class ShowPostController extends Controller {
         if (!$post) {
         throw $this->createNotFoundException(
             'No product found for id '.$id
-        );
-        }
+        );}
+        $em=$this->getDoctrine()->getManager();
+        $commentquery = $em->createQuery(
+                'SELECT p From AppBundle:Comment p WHERE p.postId = :id'
+                )->setParameter('id', $id);
+        $comment = $commentquery->getResult();
+        
         //Warunek czy znajduje sie jakiś komentarz w bazie
 //        if(!$comment){
 //                ;
@@ -53,6 +58,7 @@ class ShowPostController extends Controller {
         return $this->render('default/showpost.html.twig', array(
             'post' => $post,
             'form' => $form->createView(),
+            'comment'=> $comment,
         ));
     }
 }
