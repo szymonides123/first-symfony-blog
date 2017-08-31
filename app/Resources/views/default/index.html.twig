@@ -3,9 +3,9 @@
      {% for post in posts %}
 
          <a href="{{ url('showpost', {'id' : post.id}) }}">
-         <h1>{{ post.title }}<h1>
+         <h1>{{ post.title }}<h1> {{ post.publicationdate }}
                  <h3 class="h3">{{post.content}}</h3>
          </a> 
-
+         
     {% endfor %}
  {% endblock %}

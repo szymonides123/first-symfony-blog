@@ -36,11 +36,13 @@ class ShowPostController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $date = new \DateTime("now");
             $em = $this->getDoctrine()->getManager();
             $this->comment->setPostId($id);
+            $this->comment->setPublicationdate($date);
             $em->persist($this->comment);
             $em->flush();
-
+            
         return $this->redirect($this->generateUrl(
             'showpost',
             array('id' => $id)

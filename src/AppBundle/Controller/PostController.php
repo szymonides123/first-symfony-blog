@@ -26,7 +26,9 @@ class PostController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $publicationdate = new \DateTime("now");
             $em = $this->getDoctrine()->getManager();
+            $this->post->setPublicationdate($publicationdate);
             $em->persist($this->post);
             $em->flush();
 
@@ -40,22 +42,5 @@ class PostController extends Controller {
         
     }
     
-//    public function addCommentAction(Request $request) {
-//        $form= $this->createForm(CommentForm::class, $this->comment);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($this->comment);
-//            $em->flush();
-//
-//        return $this->redirect($this->generateUrl(
-//            'index'
-//        ));
-//        }
-//        return $this->render('default/addpost.html.twig', array(
-//            'form' => $form->createView(),
-//        ));
-//    }
 }
     

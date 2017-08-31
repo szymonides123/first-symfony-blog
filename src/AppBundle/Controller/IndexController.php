@@ -11,10 +11,9 @@ use AppBundle\Entity\Posts;
 class IndexController extends Controller{
     
     public function indexAction() {
-        
         $posts=$this->getDoctrine()->getRepository('AppBundle:Posts')->findAll();
         return $this->render('default/index.html.twig', array(
-            'posts' => $posts
+            'posts' => $posts,
         ));
     }
 }

@@ -13,14 +13,17 @@
             <url>app/config/routing.php</url>
             <bookmark id="2">
                 <name/>
-                <line>19</line>
+                <line>22</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/firstblog/app/AppKernel.php</file>
+            <file>file:/var/www/html/firstblog/app/config/routing.php</file>
+            <file>file:/var/www/html/firstblog/app/config/routing.yml</file>
+            <file>file:/var/www/html/firstblog/app/Resources/views/default/addpost.html.twig</file>
+            <file>file:/var/www/html/firstblog/app/config/config_dev.yml</file>
             <file>file:/var/www/html/firstblog/app/config/config.yml</file>
         </group>
     </open-files>

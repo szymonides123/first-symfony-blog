@@ -18,7 +18,7 @@ class PostForm extends AbstractType
 	$builder
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
-            ->add('publicationdate', DateType::class)
+//            ->add('publicationdate', DateType::class)
             ->add('author', TextType::class)
                 ;
     }
