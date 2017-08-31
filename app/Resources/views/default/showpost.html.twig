@@ -3,14 +3,23 @@
 
 <h1>{{ post.title }}<h1>
 <h3 class="h3">{{post.content}}</h3>
-{{ form_start(form) }}
+{#Sprawdzenie czy użytkownik zalogowany#}
+{% if app.user %}
+{#    Generowanie formularza komentowania#}
+    {{ form_start(form) }}
      {{ form_widget(form) }}
      <input type="submit" value="Dodaj komentarz"
            class="btn btn-default pull-left" />
      {{ form_end(form) }}
+{#Jeśli użytkownik nie jest zalogowany to#}
+{% elseif not app.user %}  
+    komentowanie jest dozwolone tylko dla zalogowanych użytkowników
+{% endif %}    
+{#Wyświetlanie komentarzy#}
      </br></br></br>
      {% for com in comment %}
-        <h4>{{ com.author }}</h4>
+        <h4>{{ com.author }}</h4> {{ com.publicationdate|date('Y-m-d H:i:s') }}
         <h6>{{ com.content }}</h6>
     {% endfor %}
+        
  {% endblock %}

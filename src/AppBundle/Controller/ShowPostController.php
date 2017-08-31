@@ -40,6 +40,7 @@ class ShowPostController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $this->comment->setPostId($id);
             $this->comment->setPublicationdate($date);
+            $this->comment->setAuthor($this->getUser());
             $em->persist($this->comment);
             $em->flush();
             

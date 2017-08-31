@@ -16,7 +16,7 @@ class CommentForm extends AbstractType {
 	$builder
             ->add('content', TextareaType::class)
 //            ->add('publicationdate', DateType::class)
-            ->add('author', TextType::class)
+//            ->add('author', TextType::class)
                 ;
     }
     

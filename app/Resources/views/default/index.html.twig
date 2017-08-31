@@ -3,7 +3,7 @@
      {% for post in posts %}
 
          <a href="{{ url('showpost', {'id' : post.id}) }}">
-         <h1>{{ post.title }}<h1> {{ post.publicationdate }}
+             <h1>{{ post.title }}<h1> <h6>{{ post.publicationdate|date('Y-m-d H:i:s') }}</h6>
                  <h3 class="h3">{{post.content}}</h3>
          </a> 
          
