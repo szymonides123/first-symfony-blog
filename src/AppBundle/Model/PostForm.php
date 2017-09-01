@@ -2,13 +2,12 @@
 
 namespace AppBundle\Model;
 
+use AppBundle\Model\PostForm;
+use AppBundle\Model\CommentForm;
 use AppBundle\Entity\Posts;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
+use AppBundle\Entity\Comment;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 
 class PostForm extends AbstractType 
 {
