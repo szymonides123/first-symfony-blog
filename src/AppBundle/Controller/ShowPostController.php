@@ -46,9 +46,9 @@ class ShowPostController extends Controller {
             $em->persist($this->comment);
             $em->flush();
             
-        return $this->redirect($this->generateUrl(
-            'showpost',
-            array('id' => $id)
+			return $this->redirect($this->generateUrl(
+				'showpost',
+				array('id' => $id)
         ));
         }
         return $this->render('default/showpost.html.twig', array(
