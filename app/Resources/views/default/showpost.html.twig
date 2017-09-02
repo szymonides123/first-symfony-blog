@@ -6,7 +6,8 @@
 {#Sprawdzenie czy użytkownik zalogowany#}
 {% if app.user %}
 {#    Generowanie formularza komentowania#}
-    {{ form_start(form) }}
+    {{ form_start(form, {'action': path('addcomment', {'id': post.id } )}) }}
+{#    #}
      {{ form_widget(form) }}
      <input type="submit" value="Dodaj komentarz"
            class="btn btn-default pull-left" />

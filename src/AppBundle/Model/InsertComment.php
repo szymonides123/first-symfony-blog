@@ -15,16 +15,14 @@ class InsertComment
         $this->comment=$comments;  
       
     } 	
-    public function insertComment($form, $id, $user, $date, Request $request){
-		$form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+    public function insertComment($form, $id, $user, $date){
             $em = $this->getDoctrine()->getManager();
             $this->comment->setPostId($id);
             $this->comment->setPublicationdate($date);
             $this->comment->setAuthor($user);
             $em->persist($this->comment);
             $em->flush();
-            return;
-        }
+            
+        
     }
 }

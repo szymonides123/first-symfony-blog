@@ -17,10 +17,11 @@ $collection->add('addpost', new Route('/post/add', array(
 $collection->add('showpost', new Route('/post/{id}', array(
     '_controller' => 'AppBundle:ShowPost:show',
 )));
+$collection->add('addcomment', new Route('/post/{id}', array(
+    '_controller' => 'AppBundle:ShowPost:addcomment',
+)));
 $collection->add('register', new Route('/register', array(
     '_controller' => 'AppBundle:Register:index',
 )));
-$collection->add('addcomment', new Route('/post/add/comment', array(
-    '_controller' => 'AppBundle:Post:addComment',
-)));
+
 return $collection;
