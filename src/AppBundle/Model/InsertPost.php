@@ -9,7 +9,7 @@ use AppBundle\Entity\Comment;
 use Symfony\Component\Form\FormBuilderInterface;
 
 
-class InsertComment 
+class InsertPost
 {	
 	public function __construct(Comment $comments ) {
         $this->comment=$comments;  
@@ -23,6 +23,7 @@ class InsertComment
             $this->post->setPublicationdate($publicationdate);
             $em->persist($this->post);
             $em->flush();
+            return;
+        }
     }
-	return;
 }

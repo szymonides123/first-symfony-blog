@@ -24,6 +24,7 @@ class InsertComment
             $this->comment->setAuthor($user);
             $em->persist($this->comment);
             $em->flush();
+            return;
+        }
     }
-	return;
 }

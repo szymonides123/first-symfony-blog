@@ -29,6 +29,7 @@ class PostController extends Controller {
             $publicationdate = new \DateTime("now");
             $em = $this->getDoctrine()->getManager();
             $this->post->setPublicationdate($publicationdate);
+            $this->post->setAuthor($this->getUser());
             $em->persist($this->post);
             $em->flush();
 

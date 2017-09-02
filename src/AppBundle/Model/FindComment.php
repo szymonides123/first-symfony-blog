@@ -18,7 +18,8 @@ class FindComment {
                 'SELECT p From AppBundle:Comment p WHERE p.postId = :id'
                 )->setParameter('id', $id);
         $comment = $commentquery->getResult(); 
+        return $comment;
     }
     
-	return $comment;
+	
 }

@@ -18,8 +18,9 @@ class FindPost {
         if (!$post) {
         throw $this->createNotFoundException(
             'No product found for id '.$id
-        );} 
+        );}
+        return $post;
     }
     
-	return $post;
+	
 }
