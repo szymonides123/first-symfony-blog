@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %} 
  {% block body %}
 
-<h1>{{ post.title }}<h1>
-<h3 class="h3">{{post.content}}</h3>
+ <h1>{{ post.title }}</h1>{% if is_granted('ROLE_ADMIN') %}  
+ <a href="{{ path('delete', {'id': app.request.get('id')}) }}">usun</a>
+ {% endif %}
+ <h3>{{post.content}}</h3>
 {#Sprawdzenie czy użytkownik zalogowany#}
 {% if app.user %}
 {#    Generowanie formularza komentowania#}
