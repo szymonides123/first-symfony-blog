@@ -17,5 +17,12 @@ class PostdeleteController extends Controller{
         $em->flush();
         return $this->redirectToRoute('index');
     }
+    public function deletecomAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $comment=$em->getRepository('AppBundle:Comment')->find($id);
+        $em->remove($comment);
+        $em->flush();
+        return $this->redirectToRoute('index');
+    }
 }
 

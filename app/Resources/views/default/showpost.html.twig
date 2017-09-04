@@ -2,7 +2,7 @@
  {% block body %}
 
  <h1>{{ post.title }}</h1>{% if is_granted('ROLE_ADMIN') %}  
- <a href="{{ path('delete', {'id': app.request.get('id')}) }}">usun</a>
+ <a href="{{ path('delete', {'id': post.id }) }}">usun</a>
  {% endif %}
  <h3>{{post.content}}</h3>
 {#Sprawdzenie czy użytkownik zalogowany#}
@@ -21,6 +21,9 @@
 {#Wyświetlanie komentarzy#}
      </br></br></br>
      {% for com in comment %}
+     {% if is_granted('ROLE_ADMIN') %}  
+ <a href="{{ path('deletecom', {'id': com.id}) }}">usun</a>
+    {% endif %}
         <h4>{{ com.author }}</h4> {{ com.publicationdate|date('Y-m-d H:i:s') }}
         <h6>{{ com.content }}</h6>
     {% endfor %}

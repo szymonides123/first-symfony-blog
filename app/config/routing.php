@@ -26,5 +26,8 @@ $collection->add('register', new Route('/register', array(
 $collection->add('delete', new Route('/post/delete/{id}', array(
     '_controller' => 'AppBundle:Postdelete:delete',
 )));
+$collection->add('deletecom', new Route('/com/deletecom/{id}', array(
+    '_controller' => 'AppBundle:Postdelete:deletecom',
+)));
 
 return $collection;
