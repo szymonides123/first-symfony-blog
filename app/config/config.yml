@@ -76,3 +76,7 @@ fos_user:
     from_email:
         address: "%szymek283@gmail.com"
         sender_name: "szymek283"
+    registration:
+        confirmation:
+            enabled: true
+    

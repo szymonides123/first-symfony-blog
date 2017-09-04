@@ -20,9 +20,6 @@ $collection->add('showpost', new Route('/post/{id}', array(
 $collection->add('addcomment', new Route('/post/{id}', array(
     '_controller' => 'AppBundle:ShowPost:addcomment',
 )));
-$collection->add('register', new Route('/register', array(
-    '_controller' => 'AppBundle:Register:index',
-)));
 $collection->add('delete', new Route('/post/delete/{id}', array(
     '_controller' => 'AppBundle:Postdelete:delete',
 )));
