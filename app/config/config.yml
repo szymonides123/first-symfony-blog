@@ -79,4 +79,11 @@ fos_user:
     registration:
         confirmation:
             enabled: true
-    
+    resetting:
+        email:
+            from_email:
+                address:        testmail4432@gmail.com
+                sender_name:    szymonides
+    service:
+        #default implementation, and uses Swiftmailer to send emails.
+        mailer: fos_user.mailer.default

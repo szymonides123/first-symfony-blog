@@ -12,6 +12,7 @@ _errors:
     
 _main:
     resource: routing.php
+    
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
