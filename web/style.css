@@ -4,3 +4,17 @@ a:hover{
 a{
     color: black;
 }
+
+.last-line {
+  word-wrap: break-word;
+  overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 10; /* number of lines to show */
+   max-height: 250px; 
+  
+}
+.col{
+    margin-top: 50px;
+}

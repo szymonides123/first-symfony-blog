@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %} 
  {% block body %}
-     {% for post in posts %}
+     {% for post in posts %}      
+         
+ 
 
-         
- {% if is_granted('ROLE_ADMIN') %}  
- <a href="{{ path('delete', {'id': post.id}) }}">usun</a>
- <a href="{{ path('addpost')}}">dodaj</a>
- {% endif %}
- <a href="{{ url('showpost', {'id' : post.id}) }}"> 
-             <h1>{{ post.title }}<h1> <h6>{{ post.publicationdate|date('Y-m-d H:i:s') }}</h6>
-                 <h3 class="h3">{{post.content}}</h3>
-</a> 
-         
+<div class="col md-12 text-center"> 
+    <h1>{{ post.title }}
+        {% if is_granted('ROLE_ADMIN') %}  
+        <a href="{{ path('delete', {'id': post.id}) }}" class="btn btn-info" role="button">usun</a>
+        <a href="{{ path('addpost')}}" class="btn btn-info" role="button">dodaj</a>
+        {% endif %}
+    </h1> 
+    <a href="{{ url('showpost', {'id' : post.id}) }}">   
+        <h6>{{ post.publicationdate|date('Y-m-d H:i:s') }}</h6>
+        <div class="last-line">
+            {{post.content}}
+        </div>
+    </a> 
+</div>         
     {% endfor %}
  {% endblock %}
