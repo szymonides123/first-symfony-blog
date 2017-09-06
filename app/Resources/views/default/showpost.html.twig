@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %} 
  {% block body %}
-
+     
+     
+     
+<div class="col md-12 text-center"> 
  <h1>{{ post.title }}</h1>{% if is_granted('ROLE_ADMIN') %}  
- <a href="{{ path('delete', {'id': post.id }) }}">usun</a>
- {% endif %}
- <h3>{{post.content}}</h3>
+ <a href="{{ path('delete', {'id': post.id }) }}" class="btn btn-info" role="button">usun</a>
+ {% endif %}</div>
+ <div class="col md-12 text-center"> 
+ <div class="last-line">{{post.content}}</div>
+ </div>
 {#Sprawdzenie czy użytkownik zalogowany#}
+<div class="col md-12 text-center"> 
 {% if app.user %}
-{#    Generowanie formularza komentowania#}
+{#    Generowani-e formularza komentowania#}
     {{ form_start(form, {'action': path('addcomment', {'id': post.id } )}) }}
 {#    #}
      {{ form_widget(form) }}
@@ -27,5 +33,5 @@
         <h4>{{ com.author }}</h4> {{ com.publicationdate|date('Y-m-d H:i:s') }}
         <h6>{{ com.content }}</h6>
     {% endfor %}
-        
+</div>
  {% endblock %}
