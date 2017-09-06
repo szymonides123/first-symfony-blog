@@ -8,6 +8,7 @@
         {% endblock %}
     </head>
     <body>
+        <div class="logo">Firstblog</div>
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
@@ -36,12 +37,14 @@
             {% block fos_user_content %}
             {% endblock fos_user_content %}
         </div>
+
         <div class="container">
         <nav class="nav nav-pills nav-justified">
             <a class="nav-item nav-link" href="{{path('index')}}">Główna</a>
             <a class="nav-item nav-link" href="#">O autorze</a>
             <a class="nav-item nav-link" href="#">Jakieś inicjatywy</a>
         </nav>
+        
         {% block body %}
         {% endblock %}
         {% block javascripts %}
