@@ -18,6 +18,9 @@ a{
    max-height: 250px; 
   
 }
+.first-line {
+  word-wrap: break-word;
+}
 .col{
     margin-top: 50px;
 }
@@ -38,4 +41,9 @@ a{
 }
 .container{
     border: 1px solid black; 
+}
+.textar{
+    resize: none;
+    width: 500px;
+    height: 200px;
 }

@@ -4,34 +4,35 @@
      
      
 <div class="col md-12 text-center"> 
- <h1>{{ post.title }}</h1>{% if is_granted('ROLE_ADMIN') %}  
+ <h1>{{ post.title }}{% if is_granted('ROLE_ADMIN') %}  
  <a href="{{ path('delete', {'id': post.id }) }}" class="btn btn-info" role="button">usun</a>
- {% endif %}</div>
+ {% endif %}</h1></div>
  <div class="col md-12 text-center"> 
- <div class="last-line">{{post.content}}</div>
+ <div class="first-line">{{post.content}}</div>
  </div>
 {#Sprawdzenie czy użytkownik zalogowany#}
-<div class="col md-12 text-center"> 
+<div class="col md-12"><h1>Komentarze</h1></div>
+<div class="col md-12"> 
 {% if app.user %}
 {#    Generowani-e formularza komentowania#}
     {{ form_start(form, {'action': path('addcomment', {'id': post.id } )}) }}
-{#    #}
-     {{ form_widget(form) }}
-     <input type="submit" value="Dodaj komentarz"
-           class="btn btn-default pull-left" />
+     {{ form_widget(form.content, {'attr': {'class': 'textar'} }) }}
+     </br></br>
+     <input type="submit" value="Dodaj komentarz" class="btn btn-default pull-left" />
      {{ form_end(form) }}
 {#Jeśli użytkownik nie jest zalogowany to#}
 {% elseif not app.user %}  
-    komentowanie jest dozwolone tylko dla zalogowanych użytkowników
+    <span style="color: red;">komentowanie jest dozwolone tylko dla zalogowanych użytkowników</span>
 {% endif %}    
 {#Wyświetlanie komentarzy#}
      </br></br></br>
      {% for com in comment %}
-     {% if is_granted('ROLE_ADMIN') %}  
- <a href="{{ path('deletecom', {'id': com.id}) }}">usun</a>
-    {% endif %}
-        <h4>{{ com.author }}</h4> {{ com.publicationdate|date('Y-m-d H:i:s') }}
-        <h6>{{ com.content }}</h6>
+        <h8>{{ com.author }} {% if is_granted('ROLE_ADMIN') %}  
+ <a href="{{ path('deletecom', {'id': com.id}) }}"class="btn btn-info" role="button">usun</a>
+    {% endif %}</h8> <span style="font-size: 10px;">{{ com.publicationdate|date('Y-m-d H:i:s') }}</span> :
+        </br></br>
+    <span class="first-line">{{ com.content }}</span>
+    <hr /> </br>   
     {% endfor %}
 </div>
  {% endblock %}
